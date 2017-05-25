@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 /**
  * Created by LordKotan on 25/05/2017... Hibernate
  */
-public class Run {
+public class RunOneMany {
         public static void main(String[] args) {
             System.out.println("Hibernate one to many (Annotation)");
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -24,6 +24,7 @@ public class Run {
             }
             System.out.println("Hola");
                /*
+               Change if you like add new record to the db
             stock.setStockCode("1");
             stock.setStockName("PADINI");
             session.save(stock);
@@ -39,7 +40,6 @@ public class Run {
             stock.getStockDailySet().add(stockDailyRecords);
             session.save(stockDailyRecords);
 
-            //session.getTransaction().commit();
             System.out.println("Done");
             Transaction tx=null;
             try{

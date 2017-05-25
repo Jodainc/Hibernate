@@ -18,6 +18,7 @@ public class Stock implements java.io.Serializable {
     private String stockCode;
     private String stockName;
     private Set<StockDaily> stockDailySet = new HashSet<StockDaily>(0);
+    private Set<Category> categories = new HashSet<Category>(0);
 
     //constructors
     public Stock(){};
@@ -58,9 +59,25 @@ public class Stock implements java.io.Serializable {
     public void setStockName(String stockName) {
         this.stockName = stockName;
     }
+
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
     public Set<StockDaily> getStockDailySet() {
         return stockDailySet;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "stock_category", catalog = "mstock", joinColumns = {
+            @JoinColumn(name = "stock_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "category_id",
+                    nullable = false, updatable = false) })
+
+    public Set<Category> getCategories() {
+        return this.categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     public void setStockDailySet(Set<StockDaily> stockDailySet) {
