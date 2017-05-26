@@ -19,6 +19,7 @@ public class Stock implements java.io.Serializable {
     private String stockName;
     private Set<StockDaily> stockDailySet = new HashSet<StockDaily>(0);
     private Set<Category> categories = new HashSet<Category>(0);
+    private StockDetail stockDetail;
 
     //constructors
     public Stock(){};
@@ -30,6 +31,11 @@ public class Stock implements java.io.Serializable {
         this.stockCode = stock_Code;
         this.stockName = stock_Name;
         this.stockDailySet = stockDailies;
+    }
+    public Stock(String stockCode, String stockName, StockDetail stockDetail) {
+        this.stockCode = stockCode;
+        this.stockName = stockName;
+        this.stockDetail = stockDetail;
     }
 
     //Set And Getters
@@ -82,6 +88,15 @@ public class Stock implements java.io.Serializable {
 
     public void setStockDailySet(Set<StockDaily> stockDailySet) {
         this.stockDailySet = stockDailySet;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "stock", cascade = CascadeType.ALL)
+    public StockDetail getStockDetail() {
+        return this.stockDetail;
+    }
+
+    public void setStockDetail(StockDetail stockDetail) {
+        this.stockDetail = stockDetail;
     }
 
 

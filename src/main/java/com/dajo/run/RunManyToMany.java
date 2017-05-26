@@ -13,7 +13,6 @@ import java.util.Set;
  */
 public class RunManyToMany {
     public static void main(String[] args) {
-
         System.out.println("Hibernate many to many (Annotation)");
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

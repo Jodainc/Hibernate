@@ -14,5 +14,6 @@
         <mapping class="com.dajo.model.Stock" />
         <mapping class="com.dajo.model.Category"></mapping>
         <mapping class="com.dajo.model.StockDaily" />
+        <mapping class="com.dajo.model.StockDetail"/>
     </session-factory>
 </hibernate-configuration>
